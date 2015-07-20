@@ -1,0 +1,109 @@
+
+/* Index */
+#customized, #creative, #performance {
+      width: 100%;
+      display: table;
+}
+#customized h2, #creative h2, #performance h2 {
+      color: #FFFFFF;
+      text-align: center;
+      text-transform: uppercase;
+}
+#customized h2:hover, #creative h2:hover, #performance h2:hover  {
+      color: #333841;
+}
+
+#customized p, #creative p, #performance p, #bottom p{
+      color: #FFFFFF;
+      line-height: 200%;
+      padding: 15% 15% 0px 15%;
+      font-family: 'Verdana';
+}
+@media screen and (max-width: 760px){
+      #customized p, #creative p, #performance p {
+            font-size: 100%;
+            padding: 0px 10% 0px 10%;
+            font-family: 'Verdana';
+      }
+}
+/* Index */
+
+
+/* Contact */
+.contactForm {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: 10%;
+      max-top-margin: 90px;
+}
+.contactForm input {
+      width: 35%;
+      padding: 1%;
+      margin: 1%;
+      color: #43C3B1;
+      background-color: #333841;
+      border: none;
+      display: inline-block;
+      font-family:'Verdana';
+      font-size: 100%;
+      border-radius: 3px;
+}
+.contactForm textarea {
+      width: 80%;
+      margin: 1%;
+      padding: 1%;
+      color: #43C3B1;
+      background-color: #333841;
+      border: none;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      font-family:'Verdana';
+      font-size: 100%;
+      max-width: 1100px;
+      max-height: 360px;
+      height: 200px;
+      border-radius: 3px;
+}
+.contactForm button {
+      width: 25%;
+      padding: 2%;
+      border: none;
+      cursor: pointer;
+      box-shadow: rgba(51, 56, 65, 0.498039) 2px 2px 2px 0px;
+      background-color: #2973A8;
+      color: #43C3B1;
+      font-size: 110%;
+      font-family: 'Syncopate';
+      font-weight: bold;
+      border-radius: 3px;
+}
+.contactForm button:hover {
+      box-shadow: rgba(51, 56, 65, 0.7) 3px 3px 3px 0px;
+}
+
+.contactForm input::-webkit-input-placeholder {
+   color: #C36159;
+}
+.contactForm textarea::-webkit-input-placeholder{
+      color: #C36159;
+}
+
+@media screen and (max-width: 650px){
+      .contactForm input {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+      }
+}
+/* Contact */
+
+/* About */
+.about {
+      text-align:center;
+      font-family: Verdana;
+      padding: 5%;
+}
+/* About */
