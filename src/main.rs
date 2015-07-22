@@ -16,9 +16,11 @@ use urlencoded::UrlEncodedBody;
 use rustc_serialize::json::{ToJson};
 
 use std::path::Path;
-// use std::io::Read;
 use std::collections::{BTreeMap};
-use std::process::Command;
+
+extern crate sendmail;
+use sendmail::email;
+
 
 fn main() {
 
@@ -46,13 +48,39 @@ fn main() {
         res.set_mut(Template::new("contact", data)).set_mut(status::Ok);
         Ok(res)
     };
-    fn submit(req: &mut Request) -> IronResult<Response> {
+    fn confirmation(req: &mut Request) -> IronResult<Response> {
         // Gets the Encoded URL from the Post
-        let data = req.get_ref::<UrlEncodedBody>();
-        let lastname = data.unwrap();
-        println!("{}", lastname["lastname"][0]);
+        let post_data = req.get_ref::<UrlEncodedBody>();
+        let ref post_data = post_data.unwrap();
+        let ref first_name = post_data["firstname"][0];
+        let ref last_name = post_data["lastname"][0];
+        let ref phone = post_data["phone"][0];
+        let ref email = post_data["email"][0];
+        let ref message = post_data["message"][0];
 
-        Ok(Response::with( (status::Ok, "post") ))
+        let contact_form_message = "Name: ".to_string() + &first_name + " " + &last_name + "<br/>";
+        let contact_form_message = contact_form_message + "Phone: " + &phone + "<br/>" ;
+        let contact_form_message = contact_form_message + "Email: " + &email + "<br/>" ;
+        let contact_form_message = contact_form_message + "Message: " + &message;
+        let html_open = "<html><body style=\"text-align:center;color:black;\"><h2>".to_string();
+        let html_close = "</h2></body></html>".to_string();
+        let email_body = html_open + &contact_form_message + &html_close;
+
+        email::create(
+            "contact.form@verge.website",
+            "alex.steven.elias@gmail.com",
+            "Contact Form Inquiry",
+            &email_body
+        );
+        email::send("alex.steven.elias@gmail.com");
+
+        let mut res = Response::new();
+        let mut data = BTreeMap::new();
+        data.insert("title".to_string(), "Confirmation".to_json());
+        data.insert("sub-title".to_string(), "".to_json());
+        data.insert("tab-title".to_string(), "Confirmation".to_json());
+        res.set_mut(Template::new("confirmation", data)).set_mut(status::Ok);
+        Ok(res)
     };
     fn about(re: &mut Request) -> IronResult<Response> {
         let mut res = Response::new();
@@ -68,7 +96,7 @@ fn main() {
 
 
     //Add routes to router
-    router.get("/", index).get("/contact", contact).post("/submit", submit ).get("/about", about);
+    router.get("/", index).get("/contact", contact).post("/confirmation", confirmation ).get("/about", about);
 
     //Chaing link the router
     let mut chain = Chain::new(router);

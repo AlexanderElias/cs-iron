@@ -1,0 +1,7 @@
+From:contact.form@verge.website
+To:alex.steven.elias@gmail.com
+Subject:Contact Form Inquiry
+Content-Type: text/html
+<html><body style="text-align:center;color:black;"><h2>Name: Alex Elias<br/>Phone: 520-870-7847<br/>Email: me@yes.com<br/>Message: Hello I would like to buy a site from you.
+
+Thanks.</h2></body></html>

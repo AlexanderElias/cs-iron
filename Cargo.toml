@@ -1,6 +1,6 @@
 [package]
-name = "rust-iron-handlebars"
-version = "0.1.0"
+name = "cs-iron"
+version = "1.0.0"
 authors = ["Alexander Elias"]
 
 [dependencies]
@@ -11,3 +11,5 @@ mount = "*"
 handlebars-iron = "*"
 rustc-serialize = "*"
 urlencoded = "*"
+
+sendmail = "*"
