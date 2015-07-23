@@ -12,4 +12,4 @@ handlebars-iron = "*"
 rustc-serialize = "*"
 urlencoded = "*"
 
-sendmail = "*"
+ssmtp = "*"

@@ -18,8 +18,8 @@ use rustc_serialize::json::{ToJson};
 use std::path::Path;
 use std::collections::{BTreeMap};
 
-extern crate sendmail;
-use sendmail::email;
+extern crate ssmtp;
+use ssmtp::email;
 
 
 fn main() {
