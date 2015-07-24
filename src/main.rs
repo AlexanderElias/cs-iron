@@ -111,5 +111,5 @@ fn main() {
 
 
     //Add Mounts to the server
-    Iron::new( mounts ).http("localhost:8080").unwrap();
+    Iron::new( mounts ).http("0.0.0.0:3000").unwrap();
 }
