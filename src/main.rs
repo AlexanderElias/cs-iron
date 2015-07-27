@@ -82,7 +82,7 @@ fn main() {
         res.set_mut(Template::new("confirmation", data)).set_mut(status::Ok);
         Ok(res)
     };
-    fn about(re: &mut Request) -> IronResult<Response> {
+    fn about(res: &mut Request) -> IronResult<Response> {
         let mut res = Response::new();
         let mut data = BTreeMap::new();
         data.insert("tab-title".to_string(), "About Us | Web Development, Design, and SEO Company In Tucson".to_json());
@@ -105,9 +105,7 @@ fn main() {
 
     //Add Chain to the Mounts and add a Static directory
     let mut mounts = Mount::new();
-    mounts
-        .mount("/", chain)
-        .mount("/public", Static::new(Path::new("views/public/")) );
+    mounts.mount("/", chain).mount("/public", Static::new(Path::new("views/public/")));
 
 
     //Add Mounts to the server
